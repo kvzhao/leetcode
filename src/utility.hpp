@@ -54,6 +54,38 @@ void trimRightTrailingSpaces(string &input) {
       input.end());
 }
 
+template <typename T> T convertStrTo(const std::string &str) {
+  std::istringstream ss(str);
+  T num;
+  ss >> num;
+  return num;
+}
+
+template <typename T> vector<T> stringToVectorOf(string input) {
+  trimLeftTrailingSpaces(input);
+  trimRightTrailingSpaces(input);
+
+  input = input.substr(1, input.length() - 2);
+
+  string item;
+  stringstream ss;
+  vector<T> ret;
+
+  ss.str(input);
+  getline(ss, item, ',');
+  ret.emplace_back(convertStrTo<T>(item));
+
+  while (true) {
+    if (!getline(ss, item, ',')) {
+      break;
+    }
+    trimLeftTrailingSpaces(item);
+    ret.emplace_back(convertStrTo<T>(item));
+  }
+
+  return ret;
+}
+
 vector<int> stringToIntegerVector(string input) {
   trimLeftTrailingSpaces(input);
   trimRightTrailingSpaces(input);
@@ -100,6 +132,31 @@ vector<vector<int>> stringToIntegerVector2D(string input) {
   }
 
   return rets;
+}
+
+vector<string> stringToStringVector(string input) {
+  trimLeftTrailingSpaces(input);
+  trimRightTrailingSpaces(input);
+
+  input = input.substr(1, input.length() - 2);
+
+  string item;
+  stringstream ss;
+  vector<string> ret;
+
+  ss.str(input);
+  getline(ss, item, ',');
+  ret.emplace_back(item);
+
+  while (true) {
+    if (!getline(ss, item, ',')) {
+      break;
+    }
+    trimLeftTrailingSpaces(item);
+    ret.emplace_back(item);
+  }
+
+  return ret;
 }
 
 ListNode *stringToListNode(string input) {
@@ -194,6 +251,23 @@ string integerVectorToString(vector<int> list, int length = -1) {
   return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
+string stringVectorToString(vector<string> list, int length = -1) {
+  if (length == -1) {
+    length = list.size();
+  }
+
+  if (length == 0) {
+    return "[]";
+  }
+
+  string result;
+  for (int index = 0; index < length; index++) {
+    string s = list[index];
+    result += s + ", ";
+  }
+  return "[" + result.substr(0, result.length() - 2) + "]";
+}
+
 string integerVector2DToString(vector<vector<int>> lists, int length = -1) {
   if (length == -1) {
     length = lists.size();
@@ -207,6 +281,23 @@ string integerVector2DToString(vector<vector<int>> lists, int length = -1) {
   for (int index = 0; index < length; index++) {
     vector<int> list = lists[index];
     result += integerVectorToString(list, list.size()) + ", ";
+  }
+  return "[" + result.substr(0, result.length() - 2) + "]";
+}
+
+string stringVector2DToString(vector<vector<string>> lists, int length = -1) {
+  if (length == -1) {
+    length = lists.size();
+  }
+
+  if (length == 0) {
+    return "[[]]";
+  }
+
+  string result;
+  for (int index = 0; index < length; index++) {
+    vector<string> list = lists[index];
+    result += stringVectorToString(list, list.size()) + ", ";
   }
   return "[" + result.substr(0, result.length() - 2) + "]";
 }
