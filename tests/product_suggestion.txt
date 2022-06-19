@@ -1,0 +1,6 @@
+[mobile,mouse,moneypot,monitor,mousepad]
+mouse
+[havana]
+havana
+[bags,baggage,banner,box,cloths]
+bags
