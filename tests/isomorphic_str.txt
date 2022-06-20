@@ -1,0 +1,6 @@
+egg
+add
+paper
+title
+foo
+bar
