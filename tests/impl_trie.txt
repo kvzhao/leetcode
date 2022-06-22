@@ -1,0 +1,12 @@
+insert
+apple
+search
+apple
+search
+app
+startswith
+app
+insert
+app
+search
+app
