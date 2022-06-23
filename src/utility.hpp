@@ -24,6 +24,8 @@
 #include <stdexcept>
 #include <streambuf>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <valarray>
 #include <vector>
 
