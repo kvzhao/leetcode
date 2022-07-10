@@ -1,0 +1,6 @@
+[flower,flow,flight]
+[dog,racecar,car]
+[leets,leetcode,leet,leeds]
+[c,acc,ccc]
+[a]
+[ab, a]
