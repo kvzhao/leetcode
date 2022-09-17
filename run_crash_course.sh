@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Compile task: $1" 
-g++ -std=c++17 -Wall -O2 src/$1.cc
+g++ -std=c++17 -Wall -O2 course/$1.cc
 if [[ $? -ne 0 ]]; then
     exit 1
 fi
