@@ -4,15 +4,15 @@ using namespace std;
 class Solution {
 public:
   int waysToSplitArray(vector<int> &nums) {
-    vector<int> prefix{nums};
-    for (size_t i = 1; i < prefix.size(); ++i) {
-      prefix[i] += prefix[i - 1];
-    }
+    int total = 0;
+    for (auto n : nums)
+      total += n;
 
     int ans = 0;
-    for (size_t i = 0; i < prefix.size() - 1; ++i) {
-      int left = prefix[i];
-      int right = prefix.back() - prefix[i];
+    int left = 0;
+    for (size_t i = 0; i < nums.size() - 1; ++i) {
+      left += nums[i];
+      int right = total - left;
 
       if (left >= right)
         ++ans;
