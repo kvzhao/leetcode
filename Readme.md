@@ -8,7 +8,7 @@ g++ -std=c++17 -Wall -O2 my_code.cc
 
 Run the script
 ```shell
-./compile_and_run.sh running_sum
+./run.sh source/running_sum.cc
 Run task: running_sum
 [1, 3, 6, 10]
 [1, 2, 3, 4, 5]
