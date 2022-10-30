@@ -88,6 +88,29 @@ template <typename T> vector<T> stringToVectorOf(string input) {
   return ret;
 }
 
+template <class T> vector<vector<T>> stringToVector2DOf(string input) {
+  trimLeftTrailingSpaces(input);
+  trimRightTrailingSpaces(input);
+  input = input.substr(1, input.length() - 2);
+
+  string item;
+  stringstream ss;
+  vector<vector<T>> rets;
+
+  size_t end = 0;
+  while (true) {
+    end = input.find(']') + 1;
+    string segment = input.substr(0, end);
+    auto ret = stringToVectorOf<T>(segment);
+    rets.emplace_back(ret);
+    if (end + 1 > input.length())
+      break;
+    input = input.substr(end + 1, input.length());
+  }
+
+  return rets;
+}
+
 vector<int> stringToIntegerVector(string input) {
   trimLeftTrailingSpaces(input);
   trimRightTrailingSpaces(input);
